@@ -1,0 +1,143 @@
+
+html {
+  --color-default: #fff0f4;
+  --color-highlight: oklch(65% 0.18 15);
+
+  --font-family-heading: 'Fraunces', Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+  --font-family-default: 'Noto Sans Display', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+
+  scroll-snap-type: y mandatory;
+  timeline-scope: --section;
+
+  font-family: var(--font-family-default);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+}
+
+body,
+.content {
+  background-color: var(--color-background, black);
+}
+
+main {
+  view-timeline: --main;
+}
+
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline: --section;
+  height: 100dvh;
+}
+
+.content {
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  --contrast: 4;
+  --blur: 0.5rem;
+  padding: 2dvh 5dvh;
+
+  animation: zoom-scroll ease-in-out both;
+  animation-timeline: --section;
+
+  color: var(--color-default);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & h2 {
+    font-size: 8dvh;
+    max-width: 100dvh;
+  }
+
+  & p {
+    position: absolute;
+    font-size: 6dvh;
+    top: 70dvh;
+    left: 25dvh;
+    max-width: 100dvh;
+  }
+
+  & span {
+    color: var(--color-highlight);
+  }
+
+  & img {
+    max-height: 100dvh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    filter: drop-shadow(2px 2px 6px oklch(65% 0.18 15));
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    filter: blur(var(--blur)) contrast(var(--contrast));
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    filter: blur(0) contrast(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Remove gradient indicator on scroll-to-end (visible on small screens */
+
+.site-header label:last-of-type {
+  view-timeline: --site-header inline;
+}
+
+.site-header::after {
+  animation: fade-scroll ease-in-out both;
+  animation-timeline: --site-header;
+  animation-range: entry-crossing;
+}
+
+@keyframes fade-scroll {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* WIP */
+@keyframes zoom-scroll {
+  0% {
+    filter: blur(5rem);
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    filter: blur(0);
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    filter: blur(3rem);
+    transform: scale(1.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
