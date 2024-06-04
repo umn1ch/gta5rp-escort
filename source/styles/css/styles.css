@@ -80,6 +80,39 @@ main {
           filter: drop-shadow(2px 2px 6px oklch(65% 0.18 15));
 }
 
+@-webkit-keyframes count-up {
+  from {
+    content: "0";
+  }
+}
+
+@keyframes count-up {
+  from {
+    content: "0";
+  }
+}
+@-webkit-keyframes increase-counter {
+  to {
+    content: attr(data-number);
+  }
+}
+@keyframes increase-counter {
+  to {
+    content: attr(data-number);
+  }
+}
+#counter span {
+  -webkit-animation: increase-counter 2s ease-out forwards;
+          animation: increase-counter 2s ease-out forwards;
+}
+
+#counter span::after {
+  content: attr(data-number);
+  -webkit-animation: count-up 2s ease-out forwards;
+          animation: count-up 2s ease-out forwards;
+  visibility: hidden;
+}
+
 @-webkit-keyframes blink {
   0%, 100% {
     -webkit-filter: blur(var(--blur)) contrast(var(--contrast));

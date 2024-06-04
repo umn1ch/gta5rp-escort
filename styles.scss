@@ -81,6 +81,29 @@ main {
   }
 }
 
+@keyframes count-up {
+  from { 
+    content: '0'; 
+  }
+}
+
+@keyframes increase-counter {
+  to {
+    content: attr(data-number);
+  }
+}
+
+#counter span {
+  animation: increase-counter 2s ease-out forwards;
+}
+
+#counter span::after {
+  content: attr(data-number);
+  animation: count-up 2s ease-out forwards;
+  visibility: hidden;
+}
+
+
 @keyframes blink {
   0%,
   100% {
