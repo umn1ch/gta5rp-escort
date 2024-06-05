@@ -36,3 +36,46 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', handleScroll);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const lastSection = document.getElementById('last-section');
+    const catalogSection = document.getElementById('catalog-section');
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(lastSection, { opacity: 1 }, {
+        opacity: 0,
+        scrollTrigger: {
+            trigger: lastSection,
+            start: "bottom bottom",
+            end: "top top",
+            scrub: true,
+            onEnter: () => {
+                gsap.to(window, {
+                    scrollTo: catalogSection,
+                    duration: 1,
+                    ease: "power2.inOut"
+                });
+            }
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const catalogSection = document.querySelector('.catalog');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          catalogSection.classList.add('visible');
+          catalogSection.classList.add('gradient');
+        } else {
+          catalogSection.classList.remove('gradient');
+          catalogSection.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+  
+    observer.observe(catalogSection);
+  });
+  
