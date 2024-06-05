@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     var formData = new FormData(this);
     var message = "Имя: " + formData.get("name") + "\nВозраст: " + formData.get("age") + "\nНомер телефона: " + formData.get("phone");
-    var chatId = "678402530";
+    var chatId = "-4247224800";
     var telegramApiUrl = "https://api.telegram.org/bot7337563124:AAEwsrsQaYJWoWntT8sdR4wO9ukNUhbJUCY/sendMessage";
     var jsonData = {
       chat_id: chatId,
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "\nКомментарий: " + formData.get("comment") +
         "\nЦена: " + price;
 
-      var chatId = "678402530";
+      var chatId = "-4247224800";
       var telegramApiUrl = "https://api.telegram.org/bot7337563124:AAEwsrsQaYJWoWntT8sdR4wO9ukNUhbJUCY/sendMessage";
       var jsonData = {
         chat_id: chatId,
