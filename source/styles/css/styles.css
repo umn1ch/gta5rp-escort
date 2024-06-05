@@ -71,7 +71,7 @@ main {
   color: var(--color-highlight);
 }
 .content img {
-  max-height: 100dvh;
+  height: 100dvh;
   position: absolute;
   right: 0;
   top: 0;

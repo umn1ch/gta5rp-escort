@@ -14,7 +14,7 @@ function startCountAnimation() {
     var counter = document.getElementById('counter');
     var number = 0;
     var maxNumber = 3819;
-    var exponentialFactor = 0.3; // Коэффициент экспоненциальной функции
+    var exponentialFactor = 0.4; // Коэффициент экспоненциальной функции
     var interval = setInterval(function() {
         if (number >= maxNumber) {
             clearInterval(interval);
