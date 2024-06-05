@@ -48,10 +48,11 @@
                CATALOG
         ==================== -->
         <section class="catalog section" id="catalog-section">
+          <h2>Каталог девушек</h2>
           <div class="catalog-wrapper">
             <div class="filter-wrapper"></div>
             <ul class="cards">
-              <li>
+              <li id="number1">
                 <a href="" class="card">
                   <img src="source/images/Masha.png" class="card__image" alt="" />
                   <div class="card__overlay">
@@ -62,15 +63,131 @@
                         <h3 class="card__title">Maryun</h3>            
                       </div>
                     </div>
-                    <p class="card__description"></p>
+                    <p class="card__description">Цена: $300.000/<span>час</span></p>
                   </div>
                 </a>      
               </li>
-              <li>
+              <li id="number2">
+                <a href="" class="card">
+                  <img src="source/images/Masha.png" class="card__image" alt="" />
+                  <div class="card__overlay">
+                    <div class="card__header">
+                      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                      <img class="card__thumb" src="source/images/Mashaava.jpg" alt="" />
+                      <div class="card__header-text">
+                        <h3 class="card__title">Maryun</h3>            
+                      </div>
+                    </div>
+                    <p class="card__description">Цена: $300.000/<span>час</span></p>
+                  </div>
+                </a>      
+              </li>
+              <li id="number3">
+                <a href="" class="card">
+                  <img src="source/images/Masha.png" class="card__image" alt="" />
+                  <div class="card__overlay">
+                    <div class="card__header">
+                      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                      <img class="card__thumb" src="source/images/Mashaava.jpg" alt="" />
+                      <div class="card__header-text">
+                        <h3 class="card__title">Maryun</h3>            
+                      </div>
+                    </div>
+                    <p class="card__description">Цена: $300.000/<span>час</span></p>
+                  </div>
+                </a>      
+              </li>
+              <li id="number4">
+                <a href="" class="card">
+                  <img src="source/images/Masha.png" class="card__image" alt="" />
+                  <div class="card__overlay">
+                    <div class="card__header">
+                      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                      <img class="card__thumb" src="source/images/Mashaava.jpg" alt="" />
+                      <div class="card__header-text">
+                        <h3 class="card__title">Maryun</h3>            
+                      </div>
+                    </div>
+                    <p class="card__description">Цена: $300.000/<span>час</span></p>
+                  </div>
+                </a>      
+              </li>
+              <li id="number5">
+                <a href="" class="card">
+                  <img src="source/images/Masha.png" class="card__image" alt="" />
+                  <div class="card__overlay">
+                    <div class="card__header">
+                      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                      <img class="card__thumb" src="source/images/Mashaava.jpg" alt="" />
+                      <div class="card__header-text">
+                        <h3 class="card__title">Maryun</h3>            
+                      </div>
+                    </div>
+                    <p class="card__description">Цена: $300.000/<span>час</span></p>
+                  </div>
+                </a>      
+              </li>
+              <li id="number6">
+                <a href="" class="card">
+                  <img src="source/images/Masha.png" class="card__image" alt="" />
+                  <div class="card__overlay">
+                    <div class="card__header">
+                      <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                      <img class="card__thumb" src="source/images/Mashaava.jpg" alt="" />
+                      <div class="card__header-text">
+                        <h3 class="card__title">Maryun</h3>            
+                      </div>
+                    </div>
+                    <p class="card__description">Цена: $300.000/<span>час</span></p>
+                  </div>
+                </a>      
+              </li>
+            </ul>
+          </div>
+          <dialog id="clientFormDialog">
+            <div class="form-container">
+              <form id="clientForm">
+                <input type="text" id="name" name="name" required placeholder="Имя"><br>
+                <input type="text" id="phone" name="phone" required placeholder="Номер телефона"><br>
+                <input type="text" id="time" name="time" required placeholder="Время"><br>
+                <input type="text" id="comment" name="comment" placeholder="Комментарий"><br>
+                <input type="hidden" id="girl" name="girl">
+                <input type="hidden" id="price" name="price">
+                <button type="submit" class="button apply-send">Отправить</button>
+              </form>
+            </div>
+            <button class="apply-close" onclick="document.getElementById('clientFormDialog').close();"
+            aria-label="close" class="x"
+            id="login-close">❌</button>
+          </dialog>
+
+          <!-- ===============
+              APPLICATIONS
+          ==================== -->
+          <h2><span>Вы - девушка</span> и хотите зарабатывать деньги?</h2>
+          <div class="button-container">
+            <button class="apply" onclick="window.girlApplicant.showModal();" style="cursor: pointer;">Подать заявку</button>
+          </div>
+          <dialog id="girlApplicant">
+            <div class="form-container">
+              <form id="dataForm">
+                <input type="text" id="name" name="name" required placeholder="Имя"><br>
+                <input type="text" id="time" name="age" required placeholder="Возраст"><br>
+                <input type="text" id="phone" name="phone" required placeholder="Номер телефона"><br>
+                <button type="submit" class="button apply-send">Отправить</button>
+              </form>
+            </div>
+            <button class="apply-close" onclick="window.girlApplicant.close();"
+            aria-label="close" class="x"
+            id="login-close">❌</button>
+          </dialog>
+          <div id="popup" class="popup">
+            Сообщение отправлено!
           </div>
         </section>
       </main>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="App.js"></script>
 </html>

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   --color-default: #fff0f4;
   --color-highlight: oklch(65% 0.18 15);
@@ -13,6 +12,18 @@ html {
 }
 html body {
   margin: 0;
+}
+
+.catalog::-webkit-scrollbar {
+  display: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+h2 > span {
+  color: var(--color-highlight);
 }
 
 h1,
@@ -205,14 +216,24 @@ main {
     visibility: hidden;
   }
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .catalog {
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background: black;
-  padding: 2dvh 0;
-  -webkit-transition: background 2s, opacity 1s;
-  transition: background 2s, opacity 1s;
-  opacity: 0; /* Секция изначально невидима */
+  position: relative;
+  overflow-y: auto;
+  padding-bottom: 10dvh;
+}
+.catalog h2 {
+  color: var(--color-default);
+  text-align: center;
+  font-size: 6dvh;
 }
 
 .catalog.visible {
@@ -223,15 +244,9 @@ main {
   background: radial-gradient(circle, oklch(65% 0.18 15) 0%, rgb(0, 0, 0) 100%);
 }
 
-.catalog-wrapper {
-  width: 100dvh;
-  height: 100%;
-  color: white;
-}
-
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin: 4rem 5vw;
   padding: 0;
@@ -239,9 +254,16 @@ main {
 }
 
 .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
   display: block;
-  height: 100%;
+  height: 80%;
+  width: 100%;
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
@@ -249,7 +271,9 @@ main {
 
 .card__image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card__overlay {
@@ -282,7 +306,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   gap: 2em;
-  padding: 2em;
+  padding: 1em;
   border-radius: calc(var(--curve) * 1px) 0 0 0;
   background-color: var(--surface-color);
   -webkit-transform: translateY(-100%);
@@ -328,11 +352,275 @@ main {
 }
 
 .card__description {
-  padding: 0 2em 2em;
+  padding: 0 2em 1em;
   margin: 0;
   color: #D7BDCA;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+}
+
+.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.button-container .apply {
+  height: 7dvh;
+  width: 25dvh;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-default);
+  background-color: var(--color-highlight);
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.button-container .apply:hover {
+  letter-spacing: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.apply-close {
+  position: absolute;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  top: 2dvh;
+  right: 1dvh;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-size: 2dvh;
+}
+
+.apply-close:hover {
+  -webkit-filter: none;
+          filter: none;
+  scale: 1.2;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+dialog::-ms-backdrop {
+  backdrop-filter: blur(20px) saturate(130%) brightness(110%);
+}
+
+dialog::backdrop {
+  -webkit-backdrop-filter: blur(20px) saturate(130%) brightness(110%);
+          backdrop-filter: blur(20px) saturate(130%) brightness(110%);
+}
+
+#girlApplicant {
+  border-radius: 20px;
+  border: 0;
+  height: 40dvh;
+  width: 50dvh;
+}
+
+.form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#dataForm {
+  border-radius: var(--curve);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+#dataForm input {
+  height: 5dvh;
+  width: 40dvh;
+  border-radius: 15px;
+  border: solid 1px #dfdfdf;
+  color: #7b7b7b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+}
+
+input::-webkit-input-placeholder {
+  color: #B0B0B0;
+}
+
+input::-moz-placeholder {
+  color: #B0B0B0;
+}
+
+input:-ms-input-placeholder {
+  color: #B0B0B0;
+}
+
+input::-ms-input-placeholder {
+  color: #B0B0B0;
+}
+
+input::placeholder {
+  color: #B0B0B0;
+}
+
+.apply-send {
+  height: 6dvh;
+  width: 30dvh;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-default);
+  background-color: var(--color-highlight);
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.apply-send:hover {
+  letter-spacing: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.popup {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  right: 30px;
+  font-size: 17px;
+}
+
+.popup.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+#clientFormDialog {
+  border-radius: 20px;
+  border: 0;
+  height: 60dvh;
+  width: 50dvh;
+}
+
+.form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#clientForm {
+  border-radius: var(--curve);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+#clientForm input {
+  height: 5dvh;
+  width: 40dvh;
+  border-radius: 15px;
+  border: solid 1px #dfdfdf;
+  color: #7b7b7b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+  margin-bottom: 15px;
 }
